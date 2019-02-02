@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :commands, only: %i[index update]
   resources :tanbo, only: %i[index]
   resources :mizu_history, only: %i[index]
+  resources :led_charts, only: %i[index]
 end
