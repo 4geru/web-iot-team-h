@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_02_020331) do
+ActiveRecord::Schema.define(version: 2019_02_02_021621) do
 
   create_table "commands", force: :cascade do |t|
     t.boolean "mizu"
-    t.boolean "hikari"
+    t.boolean "red_led"
+    t.boolean "green_led"
+    t.boolean "blue_led"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "logs", force: :cascade do |t|
+    t.bigint "tanbo_id"
     t.decimal "shitsudo"
     t.decimal "oto"
     t.decimal "ondo"
