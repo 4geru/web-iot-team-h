@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :raspberrypies, only: %i[index]
   resources :logs, only: %i[create index]
   resources :commands, only: %i[index]
+  resources :tanbo, only: %i[index]
 end
