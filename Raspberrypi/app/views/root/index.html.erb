@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+<button class="button">Click here</button>
+
+<%= @command.mizu %>
+<%= @command.red_led %>
+<%= @command.green_led %>
+<%= @command.blue_led %>
+
+<br />
+
+<%= @log.shitsudo %>
+<%= @log.oto %>
+<%= @log.ondo  %>
+<%= @log.camera  %>
+<%= @log.light  %>
+<%= @log.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>

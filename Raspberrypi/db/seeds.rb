@@ -15,16 +15,16 @@
   )
 end
 
-5.times do
-  Log.create(
- tanbo_id: 1,
- shitsudo: Random.rand(255.0),
- oto: Random.rand(255.0),
- ondo: Random.rand(255.0),
- camera: Random.rand(255.0),
- light: Random.rand(255.0),
- loged_at: Time.current
- )
+# 5.times do
+#   Log.create(
+#  tanbo_id: 1,
+#  shitsudo: Random.rand(255.0),
+#  oto: Random.rand(255.0),
+#  ondo: Random.rand(255.0),
+#  camera: Random.rand(255.0),
+#  light: Random.rand(255.0),
+#  loged_at: Time.current
+#  )
 
-end
+# end
 puts 'success to create tables'
