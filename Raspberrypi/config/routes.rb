@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :logs, only: %i[create index]
   resources :commands, only: %i[index update]
   resources :tanbo, only: %i[index]
+  resources :mizu_history, only: %i[index]
 end

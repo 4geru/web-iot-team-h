@@ -29,3 +29,20 @@
     </div>
   </div>
 </div>
+
+<script>
+
+const mizuTurnOff = () => {
+  document.getElementsByClassName('button')[0].classList.remove('is-primary');
+}
+ 
+const sleep = (waitSeconds, someFunction) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(someFunction())
+    }, waitSeconds * 1000)
+  })  
+}
+ 
+sleep(5, mizuTurnOff);
+</script>
