@@ -1,0 +1,21 @@
+
+<table>
+<% @command_attributes.each do |command_attribtue| %>
+  <tr>
+    <%= form_for @command do |f| %>
+      <% status = @command.attributes[command_attribtue] %>
+      <%= f.hidden_field command_attribtue, :value => !status %>
+      <td><%= @japanese_commands[command_attribtue.to_sym] %></td>
+      <td><%= f.submit 'ボタン', class: "button #{'is-primary' if status}"%></td>
+    <% end %>
+  </td>
+<% end %>
+</table>
+<br />
+
+<%= @log.shitsudo %>
+<%= @log.oto %>
+<%= @log.ondo  %>
+<%= @log.camera  %>
+<%= @log.light  %>
+<%= @log.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>

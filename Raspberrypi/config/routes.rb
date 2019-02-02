@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root 'root#index'
   resources :raspberrypies, only: %i[index]
   resources :logs, only: %i[create index]
-  resources :commands, only: %i[index]
+  resources :commands, only: %i[index update]
   resources :tanbo, only: %i[index]
 end
