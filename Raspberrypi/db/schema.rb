@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_02_02_021621) do
     t.decimal "oto"
     t.decimal "ondo"
     t.decimal "camera"
+    t.decimal "light"
     t.datetime "loged_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

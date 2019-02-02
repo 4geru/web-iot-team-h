@@ -6,6 +6,7 @@ class CreateLogs < ActiveRecord::Migration[5.2]
       t.decimal :oto
       t.decimal :ondo
       t.decimal :camera
+      t.decimal :light
       t.datetime :loged_at
 
       t.timestamps
