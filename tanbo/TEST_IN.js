@@ -1,5 +1,6 @@
 "use strict";
 var command;
+var last_command_id=0;
 var head;
 window.addEventListener(
   "load",
@@ -27,6 +28,16 @@ async function mainFunction() {
        post_log(ondo_value,light_value); //田んぼアプリにログを送信
        get_command();
        console.log('command:', command);
+       console.log('last_command_id:', last_command_id);
+
+       //お仕事スタート
+       if (command != undefined){
+         if (last_command_id != command.id){
+          last_command_id = command.id;
+          alert("お仕事スタート:" + last_command_id);
+         };
+       }
+
        
       await sleep(10000);
     }
