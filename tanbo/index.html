@@ -1,0 +1,28 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<input type="button" id="log-push-button" value="ボタン">
+
+<script>
+$(function() {
+  $("#log-push-button").click(function(){
+    console.log('clicked button')
+    $.ajax({
+      type: "POST",
+      url: "http://192.168.8.103:3000/logs",
+      data: {
+        "tanbo_id": 1,
+        "shitsudo": 2.1,
+        "oto": 1.2,
+        "ondo": 1.3,
+        "camera": 1.4,
+        "light": 1.5,
+        "loged_at": Date.now()
+      },
+      success: function(j_data){
+        console.log('success')
+      }
+    });
+  });
+});
+</script>
