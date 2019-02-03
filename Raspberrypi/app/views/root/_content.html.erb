@@ -1,21 +1,48 @@
+<div class="tile is-ancestor">
+  <div class="tile">
+    <div class="tile is-parent is-vertical">
+      <article class="tile is-child notification is-info">
+        <p class="title">センサ</p>
+        <table class="table is-fullwidth">
+          <tr><th>湿度センサ</th><td><%= @log.shitsudo %></td></tr>
+          <tr><th>音センサ</th><td><%= @log.oto %></td></tr>
+          <tr><th>温度センサ</th><td><%= @log.ondo  %></td></tr>
+          <tr><th>光センサ</th><td><%= @log.light  %></td></tr>
+          <tr><th>取得時間</th><td><%= @log.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td></tr>
+        </table>
+      </article>
+      <article class="tile is-child notification is-success">
+        <p class="title">設定変更</p>
+        <table class="table">
+          <% @command_attributes.each do |command_attribtue| %>
+            <tr>
+              <%= form_for @command do |f| %>
+                <% status = @command.attributes[command_attribtue] %>
+                <%= f.hidden_field command_attribtue, :value => !status %>
+                <td><%= @japanese_commands[command_attribtue.to_sym] %></td>
+                <td><%= f.submit 'ボタン', class: "button is-pulled-right #{'is-primary' if status}"%></td>
+              <% end %>
+            </td>
+          <% end %>
+        </table>
+      </article>
+    </div>
+  </div>
+</div>
 
-<table>
-<% @command_attributes.each do |command_attribtue| %>
-  <tr>
-    <%= form_for @command do |f| %>
-      <% status = @command.attributes[command_attribtue] %>
-      <%= f.hidden_field command_attribtue, :value => !status %>
-      <td><%= @japanese_commands[command_attribtue.to_sym] %></td>
-      <td><%= f.submit 'ボタン', class: "button #{'is-primary' if status}"%></td>
-    <% end %>
-  </td>
-<% end %>
-</table>
-<br />
-
-<%= @log.shitsudo %>
-<%= @log.oto %>
-<%= @log.ondo  %>
-<%= @log.camera  %>
-<%= @log.light  %>
-<%= @log.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %>
+<script>
+// TODO: 水ができたらコメントアウト
+// const mizuTurnOff = () => {
+//   document.getElementsByClassName('button')[0].classList.remove('is-primary');
+// }
+ 
+// const sleep = (waitSeconds, someFunction) => {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve(someFunction())
+//     }, waitSeconds * 1000)
+//   })  
+// }
+ 
+// sleep(5, mizuTurnOff);
+</script>

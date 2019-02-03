@@ -21,7 +21,6 @@ class RootController < ApplicationController
     }
   end
 
-
   def japanese_logs
     { 
       'mizu': '散水',

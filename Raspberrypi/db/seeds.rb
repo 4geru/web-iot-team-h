@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-10.times do
+100.times do
   Command.create(
     mizu: Random.rand(2) == 1 ? true : false,
-    red_led: Random.rand(2) == 1 ? true : false,
-    green_led: Random.rand(2) == 1 ? true : false,
-    blue_led: Random.rand(2) == 1 ? true : false
+    red_led: Random.rand(100) != 1 ? true : false,
+    green_led: Random.rand(100) != 1 ? true : false,
+    blue_led: Random.rand(100) != 1 ? true : false
   )
+  sleep 1
 end
 
 # 5.times do

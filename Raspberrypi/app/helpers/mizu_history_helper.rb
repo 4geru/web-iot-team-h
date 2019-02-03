@@ -1,0 +1,2 @@
+module MizuHistoryHelper
+end

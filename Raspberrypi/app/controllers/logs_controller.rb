@@ -3,7 +3,7 @@ class LogsController < ApplicationController
   before_action :allow_origin
 
   def index
-    @logs = Log.all
+    @logs = Log.all.limit(50)
     render :index
   end
 
