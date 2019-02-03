@@ -1,0 +1,41 @@
+<section class="hero is-primary is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        スマート田んぼ
+      </h1>
+      <h2 class="subtitle">
+        田所さんちの様子
+      </h2>
+    </div>
+  </div>
+  <div class="tabs">
+    <ul>
+      <% if current_page?(root_path) %>
+        <li class="is-active"><a>トップ</a></li>
+      <% else %>
+        <li><%= link_to 'トップ', root_path %></li>
+      <% end %>
+
+
+      <% if current_page?(mizu_history_index_path) %>
+        <li class="is-active"><a>散水履歴</a></li>
+      <% else %>
+        <li><%= link_to '散水履歴', mizu_history_index_path %></li>
+      <% end %>
+
+
+      <% if current_page?(led_charts_path) %>
+        <li class="is-active"><a>LED履歴</a></li>
+      <% else %>
+        <li><%= link_to 'LED履歴', led_charts_path %></li>
+      <% end %>
+
+      <% if current_page?(log_history_index_path) %>
+        <li class="is-active"><a>センサ履歴</a></li>
+      <% else %>
+        <li><%= link_to 'センサ履歴', log_history_index_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</section>
