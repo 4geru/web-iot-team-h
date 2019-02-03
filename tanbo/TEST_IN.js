@@ -10,6 +10,13 @@ window.addEventListener(
   function() {
     mainFunction();
     //SoundFunction();
+
+    //button click
+    $("#PARTY").click(async function(){
+        alert("LET'S PARTY!!");
+        
+    });    
+
   },
   false
 );
@@ -51,18 +58,8 @@ async function mainFunction() {
     while (1) {
       var ondo_value = await adt7410.read();
       var light_value = await groveLight.read();
-
-
-
-//       console.log('ondo_value:', ondo_value);
-//       console.log('light_value:', light_value);
-
-
        post_log(ondo_value,light_value,soundCount); //田んぼアプリにログを送信
        get_command();
-//       console.log('command:', command);
-//       console.log('last_command_id:', last_command_id);
-
        //お仕事スタート
        if (command != undefined){
          if (last_command_id != command.id){
@@ -81,7 +78,7 @@ async function mainFunction() {
 
          };
        }
-      //console.log('soundCount:', soundCount);
+      //音のカウントをリセット
       soundCount = 0;
       await sleep(500);
     }
@@ -89,7 +86,6 @@ async function mainFunction() {
     console.error("error", error);
   }
 }
-
 
 
 async function SoundFunction() {
