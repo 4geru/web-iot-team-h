@@ -1,8 +1,4 @@
-  var port_R;
-  var port_G;
-  var port_B;
-  var port_P;
-async ()=>{
+(async ()=>{
   var btn_RE = document.getElementById("RE");
   var btn_GR = document.getElementById("GR");
   var btn_BL = document.getElementById("BL");
@@ -61,7 +57,7 @@ async ()=>{
     val_P ^= 1;
     port_P.write(val_P);
   };
-
+ 
    port_SW1.onchange = (val)=>{
 	  lmp_SW1.style.backgroundColor = (val)? "green" : "black";
   }
@@ -73,6 +69,5 @@ async ()=>{
   port_SOU.onchange = (val)=>{
 	  lmp_SOU.style.backgroundColor = (val)? "green" : "black";
   }
-
   
-}
+})();
