@@ -14,17 +14,21 @@
       </article>
     </div>
 
-    <div class="tile is-parent">
-      <article class="tile is-child notification is-primary">
-        <%= render partial: 'sensors' %>
-      </article>
+    <div class="tile">
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-primary">
+          <%= render partial: 'sensors' %>
+        </article>
+      </div>
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-info">
+          <%= render partial: 'controller' %>
+        </article>
+      </div>
     </div>
-    <div class="tile is-parent">
-      <article class="tile is-child notification is-info">
-        <%= render partial: 'controller' %>
-      </article>
-    </div>
+
   </div>
+
 
   <div class="tile is-parent">
     <article class="tile is-child notification is-success">
