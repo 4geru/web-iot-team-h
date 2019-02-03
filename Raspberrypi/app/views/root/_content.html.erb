@@ -4,11 +4,11 @@
       <article class="tile is-child notification is-info">
         <p class="title">センサ</p>
         <table class="table is-fullwidth">
-          <tr><th>湿度センサ</th><td><%= @log.shitsudo %></td></tr>
-          <tr><th>音センサ</th><td><%= @log.oto %></td></tr>
-          <tr><th>温度センサ</th><td><%= @log.ondo  %></td></tr>
-          <tr><th>光センサ</th><td><%= @log.light  %></td></tr>
-          <tr><th>取得時間</th><td><%= @log.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td></tr>
+          <tr><th>湿度センサ</th><td><p id="shitsudo"><%= @log.shitsudo %></p></td></tr>
+          <tr><th>音センサ</th><td><p id="oto"><%= @log.oto %></p></td></tr>
+          <tr><th>温度センサ</th><td><p id="ondo"><%= @log.ondo  %></p></td></tr>
+          <tr><th>光センサ</th><td><p id="light"><%= @log.light  %></p></td></tr>
+          <tr><th>取得時間</th><td><p id="created_at"><%= @log.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></p></td></tr>
         </table>
       </article>
       <article class="tile is-child notification is-success">

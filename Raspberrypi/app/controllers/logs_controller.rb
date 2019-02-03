@@ -3,8 +3,8 @@ class LogsController < ApplicationController
   before_action :allow_origin
 
   def index
-    @logs = Log.all.limit(50)
-    render :index
+    @log = Log.last_one
+    render :index, formats: 'json'
   end
 
   def create
