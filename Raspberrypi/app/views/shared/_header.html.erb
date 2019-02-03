@@ -17,6 +17,11 @@
         <li><%= link_to 'トップ', root_path %></li>
       <% end %>
 
+      <% if current_page?(dashboards_path) %>
+        <li class="is-active"><a>ダッシュボード</a></li>
+      <% else %>
+        <li><%= link_to 'ダッシュボード', dashboards_path %></li>
+      <% end %>
 
       <% if current_page?(mizu_history_index_path) %>
         <li class="is-active"><a>散水履歴</a></li>

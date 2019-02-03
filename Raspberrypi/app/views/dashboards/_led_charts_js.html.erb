@@ -1,0 +1,66 @@
+
+<script>
+var led_data = {
+  "type": "timeline",
+  "options": {
+    "elements": {
+      "colorFunction": function(text, data, dataset, index) {
+        if(text == '青色')return Color('blue');
+        if(text == '赤色')return Color('red');
+        if(text == '緑色')return Color('green');
+        console.log([text, data, dataset, index])
+
+        return Color('white');
+      },
+      "showText": true,
+      "textPadding": 4
+    }
+  },
+  "data": {
+    "labels": [
+      "青LED",
+      "赤LED",
+      "緑LED"
+    ],
+    "datasets": [
+      {
+        "data": [
+          <% @commands.each do |command| %>
+            <% before_command = Command.find(command.id-1) %>
+            [
+              "<%= before_command.created_at.strftime("%Y-%m-%dT%H:%M:%S") %>",
+              "<%= command.created_at.strftime("%Y-%m-%dT%H:%M:%S") %>",
+              "<%= (command.blue_led ? "青色" : "Off") %>"
+            ],
+          <% end %>
+        ]
+      },
+      {
+        "data": [
+          <% @commands.each do |command| %>
+            <% before_command = Command.find(command.id-1) %>
+            [
+              "<%= before_command.created_at.strftime("%Y-%m-%dT%H:%M:%S") %>",
+              "<%= command.created_at.strftime("%Y-%m-%dT%H:%M:%S") %>",
+              "<%= (command.red_led ? "赤色" : "Off") %>"
+            ],
+          <% end %>
+        ]
+      },
+      {
+        "data": [
+          <% @commands.each do |command| %>
+            <% before_command = Command.find(command.id-1) %>
+            [
+              "<%= before_command.created_at.strftime("%Y-%m-%dT%H:%M:%S") %>",
+              "<%= command.created_at.strftime("%Y-%m-%dT%H:%M:%S") %>",
+              "<%= (command.green_led ? "緑色" : "Off") %>"
+            ],
+          <% end %>
+        ]
+      }
+    ]
+  },
+};
+var chart = new Chart($('#ledChartCanvas')[0], led_data);
+</script>

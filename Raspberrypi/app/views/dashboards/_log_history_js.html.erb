@@ -1,0 +1,35 @@
+<script>
+var ctx = document.getElementById("chartCanvas");
+
+var data = {
+    labels: [
+        <% @logs.each do |log| %>
+            "<%= log['created_at'].strftime("%Y-%m-%d %H:%M:%S") %>",
+        <% end %>
+    ],
+    datasets: [
+        <% @log_attributes.each do |log_attribtue| %>
+          {
+            label: "<%= @setting_logs[log_attribtue.to_sym][:jp] %>",
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "<%= @setting_logs[log_attribtue.to_sym][:color] %>",
+            borderColor: "<%= @setting_logs[log_attribtue.to_sym][:color] %>",
+            pointBorderColor: "<%= @setting_logs[log_attribtue.to_sym][:color] %>",
+            pointBorderWidth: 1,
+            pointRadius: 1,
+            data: [
+                <% @logs.each do |log| %>
+                    <%= log[log_attribtue] / @setting_logs[log_attribtue.to_sym][:slice] * @setting_logs[log_attribtue.to_sym][:times] %>,
+                <% end %>
+            ]
+          },
+        <% end %>
+    ]
+};
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: data
+});
+</script>

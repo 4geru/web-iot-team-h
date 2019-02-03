@@ -1,0 +1,8 @@
+<p class="title">散水履歴</p>
+<table class="table is-fullwidth">
+  <% @mizu_histories.each do |mizu_history| %>
+    <tr>
+      <td><%= mizu_history.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td>
+    </tr>
+  <% end %>
+</table>

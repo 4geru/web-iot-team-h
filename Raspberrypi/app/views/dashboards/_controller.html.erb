@@ -1,0 +1,13 @@
+<p class="title">設定変更</p>
+<table class="table">
+  <% @command_attributes.each do |command_attribtue| %>
+    <tr>
+      <%= form_for @command_last_one do |f| %>
+        <% status = @command_last_one.attributes[command_attribtue] %>
+        <%= f.hidden_field command_attribtue, :value => !status %>
+        <td><%= @japanese_commands[command_attribtue.to_sym] %></td>
+        <td><%= f.submit 'ボタン', class: "button is-pulled-right #{'is-primary' if status}"%></td>
+      <% end %>
+    </td>
+  <% end %>
+</table>

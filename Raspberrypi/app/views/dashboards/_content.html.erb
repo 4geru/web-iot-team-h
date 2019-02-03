@@ -1,0 +1,36 @@
+<div class="tile is-ancestor">
+  <div class="tile is-vertical is-8">
+
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-warning">
+        <%= render partial: 'led_charts' %>
+      </article>
+    </div>
+
+
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-danger">
+        <%= render partial: 'log_history' %>
+      </article>
+    </div>
+
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-primary">
+        <%= render partial: 'sensors' %>
+      </article>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-info">
+        <%= render partial: 'controller' %>
+      </article>
+    </div>
+  </div>
+
+  <div class="tile is-parent">
+    <article class="tile is-child notification is-success">
+      <div class="content">
+        <%= render partial: 'mizu_history' %>
+      </div>
+    </article>
+  </div>
+</div>

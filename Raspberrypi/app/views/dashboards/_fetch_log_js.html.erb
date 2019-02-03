@@ -1,0 +1,39 @@
+<script>
+function get_command(){
+ $.ajax({
+      type: "GET",
+      url: "http://192.168.8.103:3000/logs",
+      dataType:'json',
+      success: function(command){
+        for (key in command) {
+          if (key == 'created_at') {
+            document.getElementById(key).innerText = moment(command[key]).format('YYYY年MM月DD日 HH:mm:ss');
+          } else {
+            document.getElementById(key).innerText = command[key];
+          }
+        }
+      }
+    }); 
+}
+
+
+function sleep(ms) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, ms);
+  });
+}
+
+async function mainFunction() {
+  try {
+    while(true){
+    console.log('called')
+    get_command();
+    await sleep(1000);
+  }
+  } catch (error) {
+    console.error("error", error);
+  }
+}
+mainFunction();
+
+</script>
