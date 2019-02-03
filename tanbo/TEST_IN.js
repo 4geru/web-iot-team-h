@@ -3,6 +3,8 @@ var soundCount=0;
 var command;
 var last_command_id=0;
 var head;
+var lmp_SOU = document.getElementById("SOUND");
+
 window.addEventListener(
   "load",
   function() {
@@ -40,6 +42,11 @@ async function mainFunction() {
           await port_B.export("out");
           await port_P.export("out");
 
+  port_SOU.onchange = (val)=>{
+	  lmp_SOU.style.backgroundColor = (val)? "green" : "black";
+	  if (val==1){soundCount ++ ;}
+  }
+
 
     while (1) {
       var ondo_value = await adt7410.read();
@@ -47,15 +54,11 @@ async function mainFunction() {
 
 
 
-
-  	console.log('sound:', port_SOU);
-	$("#SOUND").html(port_SOU.value);
-
 //       console.log('ondo_value:', ondo_value);
 //       console.log('light_value:', light_value);
 
 
-       post_log(ondo_value,light_value); //田んぼアプリにログを送信
+       post_log(ondo_value,light_value,soundCount); //田んぼアプリにログを送信
        get_command();
 //       console.log('command:', command);
 //       console.log('last_command_id:', last_command_id);
@@ -71,8 +74,6 @@ async function mainFunction() {
 	  var red_value = command.red_led ? 1 :0;
 	  var pump_value = command.mizu ? 1 :0;
 
-
-
 	  port_B.write(blue_value);
           port_G.write(green_value);
 	  port_R.write(red_value);
@@ -80,14 +81,15 @@ async function mainFunction() {
 
          };
        }
-
-       
+      //console.log('soundCount:', soundCount);
+      soundCount = 0;
       await sleep(500);
     }
   } catch (error) {
     console.error("error", error);
   }
 }
+
 
 
 async function SoundFunction() {
@@ -105,14 +107,14 @@ function sleep(ms) {
   });
 }
 
-function post_log(ondo,light){
+function post_log(ondo,light,oto){
  $.ajax({
       type: "POST",
       url: "http://192.168.8.103:3000/logs",
       data: {
         "tanbo_id": 1,
         "shitsudo": 2.1,
-        "oto": 1.2,
+        "oto": oto,
         "ondo": ondo,
         "camera": 1.4,
         "light": light,
