@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/ja.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +21,11 @@ function get_command(){
       dataType:'json',
       success: function(command){
         for (key in command) {
-          document.getElementById(key).innerText = command[key];
+          if (key == 'created_at') {
+            document.getElementById(key).innerText = moment(command[key]).format('YYYY年MM月DD日 HH:mm:ss');
+          } else {
+            document.getElementById(key).innerText = command[key];
+          }
         }
       }
     }); 

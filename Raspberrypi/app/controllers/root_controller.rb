@@ -2,7 +2,6 @@ class RootController < ApplicationController
   def index
     @command = Command.last_one
     @command_attributes = command_attributes
-    @log = Log.last_one
     @japanese_commands = japanese_commands
   end
 
