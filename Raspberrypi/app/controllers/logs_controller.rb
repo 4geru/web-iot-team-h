@@ -1,9 +1,7 @@
 class LogsController < ApplicationController
   protect_from_forgery except: :create
+  before_action :allow_origin
 
-
-  ACCESS_CONTROL_ALLOW_METHODS = %w(CREATE).freeze
-  ACCESS_CONTROL_ALLOW_HEADERS = %w(Accept Origin Content-Type Authorization).freeze
   def index
     @logs = Log.all
     render :index
@@ -26,5 +24,9 @@ class LogsController < ApplicationController
       light
       loged_at
     ])
+  end
+
+  def allow_origin
+    headers['Access-Control-Allow-Origin'] = '*'
   end
 end
