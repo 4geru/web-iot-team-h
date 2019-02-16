@@ -9,6 +9,7 @@ class LogsController < ApplicationController
 
   def create
     @log = Log.create(log_params)
+    Log.order(:id)[0...-100].map(&:destroy)
     render :create, formats: 'json'
   end
 
