@@ -1,6 +1,6 @@
 class RootController < ApplicationController
   def index
-    @command = Command.last_one
+    @command = Command.last_one.empty? ? Command.new : Command.last_one
     @command_attributes = command_attributes
     @japanese_commands = japanese_commands
   end

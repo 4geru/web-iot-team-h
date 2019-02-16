@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
   def index
 
-    @command_last_one = Command.last_one
+    @command_last_one = Command.last_one.empty? ? Command.new : Command.last_one
     @command_attributes = command_attributes
     @japanese_commands = japanese_commands
 
@@ -12,7 +12,7 @@ class DashboardsController < ApplicationController
     @log_attributes = log_attributes
     @setting_logs = setting_logs
 
-    @commands = Command.all[1..-1]
+    @commands = Command.all[1..-1] || []
   end
 
 
