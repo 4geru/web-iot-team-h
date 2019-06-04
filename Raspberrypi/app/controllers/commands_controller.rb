@@ -8,6 +8,8 @@ class CommandsController < ApplicationController
 
   def update
     @command = Command.find(params[:id])
+    # 0...100件を削除する
+    Command.order(:id)[0..-100].map(&:destroy)
     Command.create(update_commands_params)
     redirect_to root_path
   end
